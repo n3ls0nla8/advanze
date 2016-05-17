@@ -4,6 +4,8 @@ Nuije aims to add more features to various Spring modules.
 
 JIRA is hosted in sonatype: https://issues.sonatype.org/browse/OSSRH-16895
 
+All components are supported in Java-based configuration.
+
 ### Service method security ###
 
     <sec:global-method-security pre-post-annotations="enabled">
