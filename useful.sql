@@ -36,8 +36,8 @@ col OSUSER format a10
 col MACHINE format a10
 col PROCESS format a8
 col PROGRAM format a30
-col SQL_TEXT format a40 wrap
-SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA A ON A.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER;
+col SQL_TEXT format a50 wrap
+SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA A ON A.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER, a.DISK_READS;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set serveroutput on
 set ver off
@@ -47,4 +47,14 @@ SELECT * FROM V$SQLTEXT WHERE ADDRESS='&address' and HASH_VALUE='&hash_value' OR
 set lin 500
 col HOST_NAME format a10
 SELECT * FROM V$INSTANCE ORDER BY HOST_NAME;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+set lin 500
+set pages 9999
+set ver off
+col OWNER format a8
+col NAME format a8
+col TYPE format a8
+col LINE format 999999
+col TEXT format a120 wrap
+SELECT * FROM ALL_SOURCE WHERE NAME LIKE upper('&source_name') ORDER BY LINE;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
