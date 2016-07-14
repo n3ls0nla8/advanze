@@ -27,15 +27,22 @@ col TABLE_NAME format a40 wrap
 col COLUMN_NAME format a30 wrap
 SELECT racc.* FROM ALL_CONS_COLUMNS racc WHERE (OWNER, CONSTRAINT_NAME, TABLE_NAME) IN (SELECT OWNER, CONSTRAINT_NAME, TABLE_NAME FROM ALL_CONSTRAINTS WHERE R_CONSTRAINT_NAME IN (SELECT CONSTRAINT_NAME FROM ALL_CONSTRAINTS WHERE CONSTRAINT_TYPE IN ('P','U') AND TABLE_NAME = UPPER('&parent_table_name')));
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+set lin 200
 set ver off
 set echo off
 set trims off
 set pages 9999
 col OSUSER format a10
 col MACHINE format a10
-col PROGRAM format a40
+col PROCESS format a8
+col PROGRAM format a30
 col SQL_TEXT format a40 wrap
-SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, A.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA A ON A.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER;
+SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA A ON A.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+set serveroutput on
+set ver off
+set echo off
+SELECT * FROM V$SQLTEXT WHERE ADDRESS='&address' and HASH_VALUE='&hash_value' ORDER BY PIECE;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 500
 col HOST_NAME format a10
