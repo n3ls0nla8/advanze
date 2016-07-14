@@ -56,5 +56,5 @@ col NAME format a8
 col TYPE format a8
 col LINE format 999999
 col TEXT format a120 wrap
-SELECT * FROM ALL_SOURCE WHERE NAME LIKE upper('&source_name') ORDER BY LINE;
+SELECT * FROM ALL_SOURCE WHERE NAME LIKE UPPER('&source_name') ORDER BY LINE;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
