@@ -1,6 +1,9 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 32767
-col OWNER format a10 wrap
+SELECT * FROM ALL_TABLES WHERE TABLE_NAME LIKE upper('%&table_name');
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+set lin 32767
+col OWNER format a20 wrap
 col DATA_TYPE format a10 wrap
 col DATA_DEFAULT format a20 wrap
 SELECT OWNER, TABLE_NAME, COLUMN_NAME, DATA_TYPE, DATA_LENGTH, DATA_PRECISION, DATA_SCALE, NULLABLE, DEFAULT_LENGTH, DATA_DEFAULT FROM ALL_TAB_COLS WHERE column_name LIKE upper('%&column_name');
@@ -37,9 +40,9 @@ col MACHINE format a10
 col PROCESS format a8
 col PROGRAM format a30
 col SQL_TEXT format a50 wrap
-SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA A ON A.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER, a.DISK_READS;
+SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA a ON a.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER, a.DISK_READS;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-set serveroutput on
+set lin 200
 set ver off
 set echo off
 SELECT * FROM V$SQLTEXT WHERE ADDRESS='&address' and HASH_VALUE='&hash_value' ORDER BY PIECE;
