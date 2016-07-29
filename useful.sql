@@ -1,19 +1,4 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Must be invoked in SQL script
-set lin 32767
-set ver off
-col OWNER format a10
-col TABLE_NAME format a20
-col TABLESPACE_NAME format a15
-col CLUSTER_NAME format a15
-col IOT_NAME format a8
-col BACKED_UP format a10
-undefine table_name
-define table_name=&table_name
-SELECT OWNER, TABLE_NAME, TABLESPACE_NAME, CLUSTER_NAME, IOT_NAME, PCT_FREE, PCT_USED, INI_TRANS, MAX_TRANS, INITIAL_EXTENT, NEXT_EXTENT, MIN_EXTENTS, MAX_EXTENTS, PCT_INCREASE FROM ALL_TABLES WHERE TABLE_NAME LIKE UPPER('&table_name');
-SELECT FREELISTS, FREELIST_GROUPS, LOGGING, BACKED_UP, NUM_ROWS, BLOCKS, EMPTY_BLOCKS, AVG_SPACE, CHAIN_CNT, AVG_ROW_LEN, AVG_SPACE_FREELIST_BLOCKS, NUM_FREELIST_BLOCKS, DEGREE FROM ALL_TABLES WHERE TABLE_NAME LIKE UPPER('&table_name');
-SELECT INSTANCES, CACHE, TABLE_LOCK, SAMPLE_SIZE, LAST_ANALYZED, PARTITIONED, IOT_TYPE, TEMPORARY, SECONDARY, NESTED, BUFFER_POOL, ROW_MOVEMENT, GLOBAL_STATS, USER_STATS, DURATION, SKIP_CORRUPT, MONITORING, CLUSTER_OWNER, DEPENDENCIES, COMPRESSION FROM ALL_TABLES WHERE TABLE_NAME LIKE UPPER('&table_name');
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 32767
 col OWNER format a20 wrap
 col DATA_TYPE format a10 wrap
@@ -62,6 +47,20 @@ SELECT * FROM V$SQLTEXT WHERE ADDRESS='&address' and HASH_VALUE='&hash_value' OR
 set lin 500
 col HOST_NAME format a10
 SELECT * FROM V$INSTANCE ORDER BY HOST_NAME;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+set lin 32767
+set ver off
+col OWNER format a10
+col TABLE_NAME format a30
+col TABLESPACE_NAME format a15
+col CLUSTER_NAME format a15
+col IOT_NAME format a8
+col BACKED_UP format a10
+undefine table_name
+define table_name='accounts'
+SELECT OWNER, TABLE_NAME, TABLESPACE_NAME, CLUSTER_NAME, IOT_NAME, PCT_FREE, PCT_USED, INI_TRANS, MAX_TRANS, INITIAL_EXTENT, NEXT_EXTENT, MIN_EXTENTS, MAX_EXTENTS, PCT_INCREASE FROM ALL_TABLES WHERE TABLE_NAME LIKE UPPER('&table_name');
+SELECT FREELISTS, FREELIST_GROUPS, LOGGING, BACKED_UP, NUM_ROWS, BLOCKS, EMPTY_BLOCKS, AVG_SPACE, CHAIN_CNT, AVG_ROW_LEN, AVG_SPACE_FREELIST_BLOCKS, NUM_FREELIST_BLOCKS, DEGREE FROM ALL_TABLES WHERE TABLE_NAME LIKE UPPER('&table_name');
+SELECT INSTANCES, CACHE, TABLE_LOCK, SAMPLE_SIZE, LAST_ANALYZED, PARTITIONED, IOT_TYPE, TEMPORARY, SECONDARY, NESTED, BUFFER_POOL, ROW_MOVEMENT, GLOBAL_STATS, USER_STATS, DURATION, SKIP_CORRUPT, MONITORING, CLUSTER_OWNER, DEPENDENCIES, COMPRESSION FROM ALL_TABLES WHERE TABLE_NAME LIKE UPPER('&table_name');
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 500
 set pages 9999
