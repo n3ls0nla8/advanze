@@ -1,8 +1,3 @@
-
-https://docs.google.com/file/d/0B0sRqRrACrCfU2F6WEZYcDZXMjQ/edit?usp=docslist_api&filetype=msexcel
-
-
-
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Must be invoked in SQL script
 set lin 32767
