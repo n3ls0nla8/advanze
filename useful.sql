@@ -32,9 +32,10 @@ col PARENT format a30 wrap
 undefine parent_table_name
 SELECT UPPER('&&parent_table_name') PARENT, racc.* FROM ALL_CONS_COLUMNS racc WHERE (OWNER, CONSTRAINT_NAME, TABLE_NAME) IN (SELECT OWNER, CONSTRAINT_NAME, TABLE_NAME FROM ALL_CONSTRAINTS WHERE R_CONSTRAINT_NAME IN (SELECT CONSTRAINT_NAME FROM ALL_CONSTRAINTS WHERE CONSTRAINT_TYPE IN ('P','U') AND TABLE_NAME = UPPER('&&parent_table_name')));
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-set lin 500
+set lin 1000
 set ver off
 col TABLE_NAME format a30 wrap
+col COLUMN_NAME format a30 wrap
 col R_TABLE_NAME format a30 wrap
 col R_OWNER format a10 wrap
 undefine child_table_name
@@ -49,9 +50,10 @@ col OSUSER format a10
 col MACHINE format a10
 col PROGRAM format a15 wrap
 col PROCESS format a8
+col BUFFER_GETS format 9999999999
 col SORTS format 99999
 col SQL_TEXT format a60 wrap
-SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SORTS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA a ON a.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER, a.DISK_READS;
+SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SORTS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA a ON a.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER, a.DISK_READS;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 200
 set ver off
@@ -61,7 +63,7 @@ SELECT * FROM V$SQLTEXT WHERE ADDRESS='&address' and HASH_VALUE='&hash_value' OR
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 200
 col USER_NAME format a10
-SELECT * FROM V$OPEN_CURSOR WHERE SID='&sid';
+SELECT * FROM V$OPEN_CURSOR WHERE USER_NAME=user;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 500
 col HOST_NAME format a10
