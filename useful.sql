@@ -50,10 +50,23 @@ col OSUSER format a10
 col MACHINE format a10
 col PROGRAM format a15 wrap
 col PROCESS format a8
-col BUFFER_GETS format 9999999999
-col SORTS format 99999
+col DISK_READS format 999,999
+col BUFFER_GETS format 9,999,999,999
+col SORTS format 99,999
+col SID format 999
 col SQL_TEXT format a60 wrap
 SELECT s.OSUSER, s.MACHINE, s.PROCESS, s.PROGRAM, s.STATUS, s.SID, s.SERIAL#, a.ADDRESS, a.HASH_VALUE, a.DISK_READS, a.BUFFER_GETS, a.SORTS, a.SQL_TEXT FROM V$SESSION S JOIN V$SQLAREA a ON a.HASH_VALUE = s.SQL_HASH_VALUE ORDER BY s.OSUSER, a.DISK_READS;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT OWNER, OBJECT_NAME, STATISTIC_NAME, VALUE
+FROM V$SEGMENT_STATISTICS
+WHERE OBJECT_NAME IN
+('APP_INTEREST_USER_CCY_CODES', 'FIXED_DEPOSIT_ACCOUNTS', 'CURRENT_ACCOUNT_BALANCES', 'CURRENT_ACCOUNTS', 'IRD_ACCOUNT_BALANCES', 
+'APP_INTEREST_USER_CCY_CODES', 'IRD_ACCOUNTS', 'SAVINGS_ACCOUNT_BALANCES', 'APP_INTEREST_USER_CCY_CODES', 'FIXED_DEPOSIT_ACCOUNTS',
+'APP_INTEREST_USER_CCY_CODES', 'SIGNATURE_CARDS', 'SECURITIES_ACCOUNTS', 'SECURITIES_ACCOUNT_BALANCES', 'SECURITIES',
+'LOAN_PAYMENTS', 'APP_SYSTEM_PARAMETERS', 'LOAN_ACCOUNTS', 'LOAN_PAYMENTS', 'APP_SYSTEM_PARAMETERS', 'LOAN_ACCOUNT_BALANCES',
+'CREDIT_CARD_ACCOUNTS', 'LG_ISSUES', 'UNIT_TRUST_FUNDS', 'UNIT_TRUST_ACCOUNT_BALANCES')
+ORDER BY VALUE
+/
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 200
 set ver off
@@ -63,7 +76,44 @@ SELECT * FROM V$SQLTEXT WHERE ADDRESS='&address' and HASH_VALUE='&hash_value' OR
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 200
 col USER_NAME format a10
-SELECT * FROM V$OPEN_CURSOR WHERE USER_NAME=user;
+SELECT c.* FROM V$OPEN_CURSOR c JOIN V$SESSION s ON c.SID=s.SID AND c.USER_NAME='&username' AND s.TERMINAL='&tty';
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+set verify off
+set lines 200
+set pagesize 999
+col username format a13
+col prog format a22
+col sql_text format a41 wrap
+col sid format 999
+col child_number format 99999 heading CHILD
+col ocategory format a10
+col executions format 9,999,999
+col executions_per_sec format 999,999.99
+col etime format 9,999,999.99
+col avg_etime format 9,999,999.99
+col cpu format 9,999,999
+col avg_cpu  format 9,999,999.99
+col pio format 9,999,999
+col avg_pio format 9,999,999.99
+col lio format 9,999,999
+col avg_lio format 9,999,999.99
+col avg_fetches format 9,999,999.99
+col avg_rows format 9,999,999
+SELECT ADDRESS, HASH_VALUE, CHILD_NUMBER, EXECUTIONS,
+EXECUTIONS/((SYSDATE-TO_DATE(FIRST_LOAD_TIME,'YYYY-MM-DD/HH24:MI:SS'))*(24*60*60)) EXECUTIONS_PER_SEC,
+-- ELAPSED_TIME/1000000 ETIME,
+(ELAPSED_TIME/1000000)/DECODE(NVL(EXECUTIONS,0),0,1,EXECUTIONS) AVG_ETIME,
+-- CPU_TIME/1000000 CPU,
+(CPU_TIME/1000000)/DECODE(NVL(EXECUTIONS,0),0,1,EXECUTIONS) AVG_CPU,
+-- DISK_READS PIO,
+DISK_READS/DECODE(NVL(EXECUTIONS,0),0,1,EXECUTIONS) AVG_PIO,
+-- BUFFER_GETS LIO,
+BUFFER_GETS/DECODE(NVL(EXECUTIONS,0),0,1,EXECUTIONS) AVG_LIO,
+FETCHES/DECODE(NVL(EXECUTIONS,0),0,1,EXECUTIONS) AVG_FETCHES,
+ROWS_PROCESSED/DECODE(NVL(EXECUTIONS,0),0,1,EXECUTIONS) AVG_ROWS,
+SQL_TEXT
+FROM V$SQL S
+WHERE ADDRESS LIKE NVL('&ADDRESS',ADDRESS) AND HASH_VALUE LIKE NVL('&HASH_VALUE',HASH_VALUE);
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 set lin 500
 col HOST_NAME format a10
