@@ -14,7 +14,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface WebSecurityExpression {
 
-    String message() default "{org.bitbucket.risu8.hibernate.validator.constraints.WebSecurityExpression.message}";
+    String message() default "{org.advanze.hibernate.validator.constraints.WebSecurityExpression.message}";
 
     Class<?>[] groups() default { };
 
