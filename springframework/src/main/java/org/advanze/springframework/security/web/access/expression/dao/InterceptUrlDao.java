@@ -1,6 +1,6 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.access.expression.dao;
+package org.advanze.springframework.security.web.access.expression.dao;
 
-import org.bitbucket.risu8.nuije.springframework.security.web.access.expression.domain.InterceptUrl;
+import org.advanze.springframework.security.web.access.expression.domain.InterceptUrl;
 
 import java.util.List;
 

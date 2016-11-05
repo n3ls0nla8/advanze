@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.provisioning.domain;
+package org.advanze.springframework.security.provisioning.domain;
 
 import lombok.Getter;
 import lombok.Setter;

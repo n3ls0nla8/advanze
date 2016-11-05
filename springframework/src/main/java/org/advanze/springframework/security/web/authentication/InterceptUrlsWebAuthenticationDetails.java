@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.authentication;
+package org.advanze.springframework.security.web.authentication;
 
 import lombok.Getter;
 import lombok.Setter;

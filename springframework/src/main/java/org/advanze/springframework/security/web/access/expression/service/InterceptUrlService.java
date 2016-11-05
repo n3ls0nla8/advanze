@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.access.expression.service;
+package org.advanze.springframework.security.web.access.expression.service;
 
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.RequestMatcher;

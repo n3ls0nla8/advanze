@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.hibernate.validator.constraints.constraintvalidator;
+package org.advanze.hibernate.validator.constraints.constraintvalidator;
 
 import org.bitbucket.risu8.nuije.hibernate.validator.constraints.WebSecurityExpression;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.authentication;
+package org.advanze.springframework.security.web.authentication;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

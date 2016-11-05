@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.access;
+package org.advanze.springframework.security.access;
 
 import org.springframework.security.core.Authentication;
 

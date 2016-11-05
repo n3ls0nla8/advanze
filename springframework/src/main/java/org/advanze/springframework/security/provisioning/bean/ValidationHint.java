@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.provisioning.bean;
+package org.advanze.springframework.security.provisioning.bean;
 
 public interface ValidationHint {
 

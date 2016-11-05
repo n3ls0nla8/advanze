@@ -1,8 +1,8 @@
-package org.bitbucket.risu8.nuije.springframework.security.provisioning.dao.hibernate;
+package org.advanze.springframework.security.provisioning.dao.hibernate;
 
 import lombok.Setter;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.dao.UserDao;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.User;
+import org.advanze.springframework.security.provisioning.dao.UserDao;
+import org.advanze.springframework.security.provisioning.domain.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;

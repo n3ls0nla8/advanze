@@ -1,8 +1,8 @@
-package org.bitbucket.risu8.nuije.springframework.security.access;
+package org.advanze.springframework.security.access;
 
 import lombok.extern.slf4j.Slf4j;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.Role;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.Grant;
+import org.advanze.springframework.security.provisioning.domain.Grant;
+import org.advanze.springframework.security.provisioning.domain.Role;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

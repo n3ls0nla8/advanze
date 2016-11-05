@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.access.expression.method;
+package org.advanze.springframework.security.access.expression.method;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
@@ -13,9 +13,9 @@ public class DefaultMethodSecurityExpressionHandler extends org.springframework.
     protected MethodSecurityExpressionOperations createSecurityExpressionRoot(Authentication authentication, MethodInvocation invocation) {
         MethodSecurityExpressionOperations root = super.createSecurityExpressionRoot(authentication, invocation);
         PermissionEvaluator evaluator = getPermissionEvaluator();
-        if (!(evaluator instanceof org.bitbucket.risu8.nuije.springframework.security.access.PermissionEvaluator)) {
+        if (!(evaluator instanceof org.advanze.springframework.security.access.PermissionEvaluator)) {
             return root;
         }
-        return new MethodSecurityExpressionRootDecorator(authentication, (org.bitbucket.risu8.nuije.springframework.security.access.PermissionEvaluator) evaluator, root);
+        return new MethodSecurityExpressionRootDecorator(authentication, (org.advanze.springframework.security.access.PermissionEvaluator) evaluator, root);
     }
 }

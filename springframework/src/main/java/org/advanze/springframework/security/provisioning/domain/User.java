@@ -1,9 +1,8 @@
-package org.bitbucket.risu8.nuije.springframework.security.provisioning.domain;
+package org.advanze.springframework.security.provisioning.domain;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.bitbucket.risu8.nuije.hibernate.validator.constraints.UniqueProperties;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.bean.CredentialsHolder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,7 +16,7 @@ import java.util.Set;
 @UniqueProperties(User.class)
 @Getter
 @Setter
-public class User implements Serializable, Comparable<User>, CredentialsHolder {
+public class User implements Serializable, Comparable<User> {
 
     private static final long serialVersionUID = 5642457774229996291L;
 

@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.servlet.handler;
+package org.advanze.springframework.security.web.servlet.handler;
 
 import lombok.Setter;
 import org.springframework.security.web.WebAttributes;

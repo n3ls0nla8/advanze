@@ -1,8 +1,8 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.access.expression.dao.hibernate;
+package org.advanze.springframework.security.web.access.expression.dao.hibernate;
 
 import lombok.Setter;
-import org.bitbucket.risu8.nuije.springframework.security.web.access.expression.domain.InterceptUrl;
-import org.bitbucket.risu8.nuije.springframework.security.web.access.expression.dao.InterceptUrlDao;
+import org.advanze.springframework.security.web.access.expression.dao.InterceptUrlDao;
+import org.advanze.springframework.security.web.access.expression.domain.InterceptUrl;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 

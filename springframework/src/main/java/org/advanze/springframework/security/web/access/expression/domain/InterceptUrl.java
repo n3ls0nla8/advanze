@@ -1,10 +1,10 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.access.expression.domain;
+package org.advanze.springframework.security.web.access.expression.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.advanze.springframework.security.provisioning.bean.ValidationHint;
 import org.apache.commons.lang3.StringUtils;
 import org.bitbucket.risu8.nuije.hibernate.validator.constraints.UniqueProperties;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.bean.ValidationHint;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 

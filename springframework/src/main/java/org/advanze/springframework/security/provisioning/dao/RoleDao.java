@@ -1,6 +1,7 @@
-package org.bitbucket.risu8.nuije.springframework.security.provisioning.dao;
+package org.advanze.springframework.security.provisioning.dao;
 
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.Role;
+
+import org.advanze.springframework.security.provisioning.domain.Role;
 
 public interface RoleDao {
 

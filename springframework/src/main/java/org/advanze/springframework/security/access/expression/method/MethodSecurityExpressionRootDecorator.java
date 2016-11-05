@@ -1,7 +1,7 @@
-package org.bitbucket.risu8.nuije.springframework.security.access.expression.method;
+package org.advanze.springframework.security.access.expression.method;
 
 import lombok.extern.slf4j.Slf4j;
-import org.bitbucket.risu8.nuije.springframework.security.access.PermissionEvaluator;
+import org.advanze.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.access.expression.SecurityExpressionRoot;
 import org.springframework.security.core.Authentication;
 

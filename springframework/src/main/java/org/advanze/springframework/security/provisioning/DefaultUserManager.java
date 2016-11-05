@@ -1,13 +1,13 @@
-package org.bitbucket.risu8.nuije.springframework.security.provisioning;
+package org.advanze.springframework.security.provisioning;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.bean.ValidationHint;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.dao.RoleDao;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.dao.UserDao;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.Role;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.User;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.UserRole;
+import org.advanze.springframework.security.provisioning.bean.ValidationHint;
+import org.advanze.springframework.security.provisioning.dao.RoleDao;
+import org.advanze.springframework.security.provisioning.dao.UserDao;
+import org.advanze.springframework.security.provisioning.domain.Role;
+import org.advanze.springframework.security.provisioning.domain.User;
+import org.advanze.springframework.security.provisioning.domain.UserRole;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.springframework.beans.BeansException;
@@ -59,7 +59,6 @@ public class DefaultUserManager implements UserManager, ApplicationContextAware 
     protected final MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
 
     @Override
-    @CredentialsChange
     @Transactional(rollbackFor = Throwable.class)
     public void createUser(User user) throws BindException {
         Assert.notNull(user, "user must not be null");
@@ -72,7 +71,6 @@ public class DefaultUserManager implements UserManager, ApplicationContextAware 
     }
 
     @Override
-    @CredentialsChange
     @Transactional(rollbackFor = Throwable.class)
     public void updateUser(User user) throws BindException {
         Assert.notNull(user, "user must not be null");
@@ -93,7 +91,7 @@ public class DefaultUserManager implements UserManager, ApplicationContextAware 
         User u = userDao.findByUsername(username);
         if (u == null) {
             BindingResult errors = new MapBindingResult(new HashMap<String, Object>(), User.class.getName());
-            errors.rejectValue("username", "org.bitbucket.risu8.nuije.core.springframework.security.provisioning.domain.User.username.notExists", new Object[]{username}, "User " + username + " not exists");
+            errors.rejectValue("username", "org.advanze.springframework.security.provisioning.domain.User.username.notExists", new Object[]{username}, "User " + username + " not exists");
             throw new BindException(errors);
         }
         u.getUserRoles().clear();

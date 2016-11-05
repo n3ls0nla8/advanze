@@ -1,9 +1,9 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.access.expression;
+package org.advanze.springframework.security.web.access.expression;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.bitbucket.risu8.nuije.springframework.security.web.access.expression.service.InterceptUrlService;
-import org.bitbucket.risu8.nuije.springframework.security.web.authentication.InterceptUrlsWebAuthenticationDetails;
+import org.advanze.springframework.security.web.access.expression.service.InterceptUrlService;
+import org.advanze.springframework.security.web.authentication.InterceptUrlsWebAuthenticationDetails;
 import org.springframework.expression.ParseException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.expression.SecurityExpressionHandler;

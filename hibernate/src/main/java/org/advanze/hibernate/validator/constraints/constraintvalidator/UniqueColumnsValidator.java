@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.hibernate.validator.constraints.constraintvalidator;
+package org.advanze.hibernate.validator.constraints.constraintvalidator;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

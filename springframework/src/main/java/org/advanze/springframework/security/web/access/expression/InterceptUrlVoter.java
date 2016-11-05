@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.web.access.expression;
+package org.advanze.springframework.security.web.access.expression;
 
 import lombok.Setter;
 import org.springframework.expression.EvaluationContext;

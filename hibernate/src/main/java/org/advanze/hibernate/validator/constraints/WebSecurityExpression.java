@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.hibernate.validator.constraints;
+package org.advanze.hibernate.validator.constraints;
 
 import org.bitbucket.risu8.nuije.hibernate.validator.constraints.constraintvalidator.WebSecurityExpressionValidator;
 

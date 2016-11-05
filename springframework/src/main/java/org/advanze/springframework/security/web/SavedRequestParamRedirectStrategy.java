@@ -1,10 +1,10 @@
-package org.bitbucket.risu8.nuije.springframework.security.web;
+package org.advanze.springframework.security.web;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.advanze.springframework.security.web.authentication.SessionRequestKeyPair;
 import org.apache.commons.lang3.StringUtils;
-import org.bitbucket.risu8.nuije.springframework.security.web.authentication.SessionRequestKeyPair;
 import org.springframework.security.web.DefaultRedirectStrategy;
 
 import javax.servlet.http.HttpServletRequest;

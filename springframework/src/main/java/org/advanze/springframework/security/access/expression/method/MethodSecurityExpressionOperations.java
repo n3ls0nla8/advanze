@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.access.expression.method;
+package org.advanze.springframework.security.access.expression.method;
 
 public interface MethodSecurityExpressionOperations extends org.springframework.security.access.expression.method.MethodSecurityExpressionOperations {
 

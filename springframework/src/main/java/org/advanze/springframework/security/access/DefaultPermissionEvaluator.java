@@ -1,4 +1,4 @@
-package org.bitbucket.risu8.nuije.springframework.security.access;
+package org.advanze.springframework.security.access;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

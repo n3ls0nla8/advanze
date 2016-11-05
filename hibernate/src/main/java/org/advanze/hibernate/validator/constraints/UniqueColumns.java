@@ -1,6 +1,6 @@
-package org.bitbucket.risu8.nuije.hibernate.validator.constraints;
+package org.advanze.hibernate.validator.constraints;
 
-import org.bitbucket.risu8.nuije.hibernate.validator.constraints.constraintvalidator.UniqueColumnsValidator;
+import org.advanze.hibernate.validator.constraints.constraintvalidator.UniqueColumnsValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

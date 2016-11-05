@@ -1,8 +1,8 @@
-package org.bitbucket.risu8.nuije.springframework.security.provisioning.dao.hibernate;
+package org.advanze.springframework.security.provisioning.dao.hibernate;
 
 import lombok.Setter;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.dao.RoleDao;
-import org.bitbucket.risu8.nuije.springframework.security.provisioning.domain.Role;
+import org.advanze.springframework.security.provisioning.dao.RoleDao;
+import org.advanze.springframework.security.provisioning.domain.Role;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
