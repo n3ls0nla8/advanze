@@ -16,13 +16,13 @@ All components are supported in Java-based configuration.
 
     <bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor" p:observeOncePerRequest="true" p:authenticationManager-ref="authenticationManager" p:accessDecisionManager-ref="accessDecisionManager" p:securityMetadataSource-ref="filterInvocationSecurityMetadataSource"/>
 
-    <bean id="filterInvocationSecurityMetadataSource" class="org.bitbucket.risu8.springframework.security.web.access.expression.InterceptUrlFilterInvocationSecurityMetadataSource" p:interceptUrlService-ref="interceptUrlService" p:expressionHandler-ref="webSecurityExpressionHandler"/>
+    <bean id="filterInvocationSecurityMetadataSource" class="org.advanze.springframework.security.web.access.expression.InterceptUrlFilterInvocationSecurityMetadataSource" p:interceptUrlService-ref="interceptUrlService" p:expressionHandler-ref="webSecurityExpressionHandler"/>
 
-    <bean id="interceptUrlService" class="org.bitbucket.risu8.springframework.security.web.access.expression.service.impl.InterceptUrlServiceImpl" p:interceptUrlDao-ref="interceptUrlDao"/>
+    <bean id="interceptUrlService" class="org.advanze.springframework.security.web.access.expression.service.impl.InterceptUrlServiceImpl" p:interceptUrlDao-ref="interceptUrlDao"/>
 
-    <bean id="authenticationDetailsSource" class="org.bitbucket.risu8.springframework.security.web.authentication.InterceptUrlsWebAuthenticationDetailsSource" p:interceptUrlService-ref="interceptUrlService"/>
+    <bean id="authenticationDetailsSource" class="org.advanze.springframework.security.web.authentication.InterceptUrlsWebAuthenticationDetailsSource" p:interceptUrlService-ref="interceptUrlService"/>
 
-    <bean id="interceptUrlDao" class="org.bitbucket.risu8.springframework.security.web.access.expression.dao.hibernate.InterceptUrlDaoImpl" p:sessionFactory-ref="sessionFactory"/>
+    <bean id="interceptUrlDao" class="org.advanze.springframework.security.web.access.expression.dao.hibernate.InterceptUrlDaoImpl" p:sessionFactory-ref="sessionFactory"/>
 
     <bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
 
