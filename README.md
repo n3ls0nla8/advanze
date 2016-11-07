@@ -7,7 +7,7 @@ JIRA is hosted in sonatype: https://issues.sonatype.org/browse/OSSRH-16895
 All components are supported in Java-based configuration.
 
 ### Dynamic access decision ###
-
+```
     <sec:http use-expressions="true" authentication-manager-ref="authenticationManager">
         <sec:form-login login-page="/login.htm" authentication-success-handler-ref="authenticationSuccessHandler" authentication-failure-handler-ref="authenticationFailureHandler" authentication-details-source-ref="authenticationDetailsSource"/>
         <sec:logout/>
@@ -50,3 +50,4 @@ All components are supported in Java-based configuration.
     <util:set id="requestRedirectMapping">
         <bean class="org.advanze.springframework.security.web.authentication.SessionRequestKeyPair" p:sessionKey="org.advanze.springframework.security.web.SavedRequestParamRedirectStrategy.username" p:requestKey="username"/>
     </util:set>
+```
