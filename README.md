@@ -29,15 +29,15 @@ All components are supported in Java-based configuration.
     <bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
         <constructor-arg>
             <util:list>
-                <bean class="org.bitbucket.risu8.springframework.security.web.access.expression.InterceptUrlVoter" p:expressionHandler-ref="webSecurityExpressionHandler"/>
+                <bean class="org.advanze.springframework.security.web.access.expression.InterceptUrlVoter" p:expressionHandler-ref="webSecurityExpressionHandler"/>
                 <bean class="org.springframework.security.web.access.expression.WebExpressionVoter" p:expressionHandler-ref="webSecurityExpressionHandler"/>
             </util:list>
         </constructor-arg>
     </bean>
     
-    <bean id="authenticationSuccessHandler" class="org.bitbucket.risu8.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler" p:userDao-ref="userDao" p:requestRedirectMapping-ref="requestRedirectMapping"/>
+    <bean id="authenticationSuccessHandler" class="org.advanze.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler" p:userDao-ref="userDao" p:requestRedirectMapping-ref="requestRedirectMapping"/>
     
-    <bean id="authenticationFailureHandler" class="org.bitbucket.risu8.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler" p:redirectStrategy-ref="redirectStrategy" p:defaultFailureUrl="/login.htm?login_error=1">
+    <bean id="authenticationFailureHandler" class="org.advanze.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler" p:redirectStrategy-ref="redirectStrategy" p:defaultFailureUrl="/login.htm?login_error=1">
         <property name="exceptionMappings">
             <util:map>
                 <entry key="org.springframework.security.authentication.CredentialsExpiredException" value="/user/changePassword.htm"/>
@@ -45,8 +45,8 @@ All components are supported in Java-based configuration.
         </property>
     </bean>
 
-    <bean id="redirectStrategy" class="org.bitbucket.risu8.springframework.security.web.SavedRequestParamRedirectStrategy" p:requestRedirectMapping-ref="requestRedirectMapping"/>
+    <bean id="redirectStrategy" class="org.advanze.springframework.security.web.SavedRequestParamRedirectStrategy" p:requestRedirectMapping-ref="requestRedirectMapping"/>
 
     <util:set id="requestRedirectMapping">
-        <bean class="org.bitbucket.risu8.springframework.security.web.authentication.SessionRequestKeyPair" p:sessionKey="org.bitbucket.risu8.springframework.security.web.SavedRequestParamRedirectStrategy.username" p:requestKey="username"/>
+        <bean class="org.advanze.springframework.security.web.authentication.SessionRequestKeyPair" p:sessionKey="org.advanze.springframework.security.web.SavedRequestParamRedirectStrategy.username" p:requestKey="username"/>
     </util:set>
