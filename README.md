@@ -6,34 +6,6 @@ JIRA is hosted in sonatype: https://issues.sonatype.org/browse/OSSRH-16895
 
 All components are supported in Java-based configuration.
 
-### Service method security ###
-
-    <sec:global-method-security pre-post-annotations="enabled">
-        <sec:expression-handler ref="methodSecurityExpressionHandler"/>
-    </sec:global-method-security>
-
-    <bean id="methodSecurityExpressionHandler" class="org.bitbucket.risu8.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
-        <property name="permissionEvaluator">
-            <bean class="org.bitbucket.risu8.springframework.security.access.DefaultPermissionEvaluator"/>
-        </property>
-    </bean>
-
-    @PreAuthorize("hasPermission('CONFIG_VIEW')")
-    public List<Config> search(Config config) {
-
-### Spring Security credentials encode ###
-
-    @Override
-    @CredentialsChange
-    @Transactional(rollbackFor = Throwable.class)
-    public void createUser(org.bitbucket.risu8.springframework.security.provisioning.domain.User user) throws BindException {
-
-### Unique record check ###
-
-    @Entity
-    @Table(name = "SEC_INTERCEPT_URL", uniqueConstraints = {@UniqueConstraint(columnNames = {"path", "method"})})
-    @UniqueProperties(InterceptUrl.class)
-
 ### Dynamic access decision ###
 
     <sec:http use-expressions="true" authentication-manager-ref="authenticationManager">
